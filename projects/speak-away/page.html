@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="{{lang}}">
+<head>
+{{head}}
+</head>
+<body>
+<a class="skip-link" href="#main">{{t:skip}}</a>
+<header class="site-header">
+  <nav class="wrap nav-inner">
+    <a class="brand" href="{{url:speak-away}}"><svg class="brand-bubble" viewBox="222 262 580 506" aria-hidden="true"><path d="M512 262C682 262 802 354 802 486C802 618 682 710 512 710C478 710 446 706 416 699L304 761C292 768 278 756 283 743L315 657C257 616 222 555 222 486C222 354 342 262 512 262Z"/><g class="bubble-bars"><rect x="342" y="438" width="84" height="96" rx="42"/><rect x="470" y="368" width="84" height="236" rx="42"/><rect x="598" y="411" width="84" height="150" rx="42"/></g></svg><span>Speak Away</span></a>
+    <div class="nav-links">
+      <a href="{{url:speak-away}}#how">{{t:nav.how}}</a>
+      <a href="{{url:speak-away}}#meetings">{{t:nav.meetings}}</a>
+      <a href="{{url:speak-away}}#faq">{{t:nav.faq}}</a>
+      {{#if cfg:links.coffee}}<a href="{{url:hub}}#support">{{t:nav.support}}</a>{{/if}}
+    </div>
+    <div class="nav-actions">
+      <a class="lang-switch language-es" href="{{url:speak-away@es}}" hreflang="es" lang="es" aria-label="{{t:lang.label}}">ES</a>
+      <a class="lang-switch language-en" href="{{url:speak-away@en}}" hreflang="en" lang="en" aria-label="{{t:lang.label}}">EN</a>
+      <a class="btn btn-ghost github-pill" href="{{pj:repo}}" aria-label="{{t:nav.github}}">{{icon:github-logo}}<span>{{t:nav.github}}</span></a>
+    </div>
+  </nav>
+</header>
+<main id="main">
+  <section class="hero product-hero wrap" id="hero">
+    <div class="product-split">
+      <div class="product-copy">
+        <h1>{{h:hero.title}}</h1>
+        <p class="lede">{{t:hero.sub}}</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="{{pj:download}}">{{icon:download-simple}}{{t:cta.download}}</a>
+          <a class="btn btn-ghost" href="{{pj:repo}}">{{icon:github-logo}}{{t:cta.source}}</a>
+        </div>
+        <a class="text-link hub-return" href="{{url:hub}}">{{cfg:brand}}</a>
+        <p class="product-note mono">{{t:hero.requirements}}</p>
+      </div>
+      <figure class="demo-stage" aria-label="{{t:demo.title}}">
+        <div class="demo-meta mono"><span id="demo-app">{{t:demo.app}}</span><span id="demo-speaker">{{t:demo.speaker}}</span></div>
+        <p class="demo-text" id="demo-text">{{t:demo.sample}}</p>
+        <div class="demo-hud" id="demo-hud" aria-hidden="true">
+          <span class="demo-dot"></span><span class="mono" id="demo-label">{{t:demo.pasted}}</span>
+        </div>
+        <figcaption class="product-note">{{t:demo.caption}}</figcaption>
+        <button class="btn btn-ghost" id="demo-replay" type="button" hidden>{{icon:arrow-right}}{{t:demo.replay}}</button>
+      </figure>
+    </div>
+  </section>
+  <section class="section wrap" id="how">
+    <div class="product-copy section-heading">
+      <h2>{{t:how.title}}</h2>
+      <p class="lede">{{t:how.sub}}</p>
+    </div>
+    <ol class="keys-flow">
+      <li><kbd class="key">Fn</kbd><div><h3>{{t:how.start.title}}</h3><p>{{t:how.start.text}}</p></div></li>
+      <li><kbd class="key">Fn</kbd><div><h3>{{t:how.finish.title}}</h3><p>{{t:how.finish.text}}</p></div></li>
+    </ol>
+    <ul class="app-chips" aria-label="{{t:how.apps}}">
+      <li>Gmail</li><li>WhatsApp</li><li>Slack</li><li>Notion</li><li>Terminal</li><li>VS Code</li><li>{{t:how.more}}</li>
+    </ul>
+    <p class="product-note">{{t:how.offline}}</p>
+  </section>
+  <section class="section wrap" id="meetings">
+    <div class="product-split">
+      <div class="product-copy">
+        <h2>{{t:meetings.title}}</h2>
+        <p class="lede">{{t:meetings.sub}}</p>
+        <p>{{h:meetings.files}}</p>
+        <p>{{h:meetings.summary}}</p>
+        <p>{{t:meetings.copy}}</p>
+        <p class="product-note">{{t:meetings.audio}}</p>
+      </div>
+      <img class="product-capture" src="{{asset:img/reuniones-light-2000.webp}}" srcset="{{asset:img/reuniones-light-1000.webp}} 1000w, {{asset:img/reuniones-light-2000.webp}} 2000w" sizes="(min-width: 960px) 55vw, 100vw" width="2000" height="1440" loading="lazy" alt="{{t:meetings.alt}}">
+    </div>
+  </section>
+  <section class="section wrap" id="yours">
+    <div class="product-split">
+      <div class="product-copy">
+        <h2>{{t:yours.title}}</h2>
+        <p class="lede">{{t:yours.sub}}</p>
+        <p>{{t:yours.intelligence}}</p>
+        <p class="product-note">{{t:yours.scratchpad}}</p>
+      </div>
+      <img class="product-capture" src="{{asset:img/atajos-light-2000.webp}}" srcset="{{asset:img/atajos-light-1000.webp}} 1000w, {{asset:img/atajos-light-2000.webp}} 2000w" sizes="(min-width: 960px) 55vw, 100vw" width="2000" height="1440" loading="lazy" alt="{{t:yours.alt}}">
+    </div>
+  </section>
+  <section class="section wrap" id="streaks">
+    <div class="product-split">
+      <div class="product-copy">
+        <h2>{{t:streaks.title}}</h2>
+        <p class="lede">{{t:streaks.sub}}</p>
+      </div>
+      <picture class="streak-capture">
+        <source srcset="{{asset:img/racha-oscuro.webp}}" media="(prefers-color-scheme: dark)">
+        <img class="product-capture" src="{{asset:img/racha-claro.webp}}" width="1440" height="1436" loading="lazy" alt="{{t:streaks.alt}}">
+      </picture>
+    </div>
+  </section>
+  <section class="section wrap" id="privacy">
+    <div class="privacy-panel product-split">
+      <h2>{{t:privacy.title}}</h2>
+      <div class="product-copy">
+        <ul class="privacy-facts">
+          <li>{{t:privacy.fact1}}</li><li>{{t:privacy.fact2}}</li>
+          <li>{{t:privacy.fact3}}</li><li>{{t:privacy.fact4}}</li>
+        </ul>
+        <a class="text-link" href="{{url:speak-away-privacy}}">{{t:privacy.full}}{{icon:arrow-right}}</a>
+      </div>
+    </div>
+  </section>
+  <section class="section wrap" id="source">
+    <div class="product-split">
+      <div class="product-copy">
+        <h2>{{t:source.title}}</h2>
+        <p class="lede">{{t:source.sub}}</p>
+        <div class="actions"><a class="btn btn-ghost" href="{{pj:repo}}">{{icon:github-logo}}{{t:cta.source}}</a></div>
+      </div>
+      <pre class="terminal mono"><code><span>{{t:source.build}}</span>
+git clone https://github.com/martinfurbano-ai/speak-away
+cd speak-away/app
+./scripts/build-app.sh
+
+<span>{{t:source.result}}</span></code></pre>
+    </div>
+  </section>
+  <section class="section wrap" id="faq">
+    <div class="product-split">
+      <h2>{{t:faq.title}}</h2>
+      <div class="faq-list">
+        <details><summary>{{t:faq.q1}}</summary><p>{{t:faq.a1}}</p></details>
+        <details><summary>{{t:faq.q2}}</summary><p>{{t:faq.a2}}</p></details>
+        <details><summary>{{t:faq.q3}}</summary><p>{{t:faq.a3}}</p></details>
+        <details><summary>{{t:faq.q4}}</summary><p>{{t:faq.a4}}</p></details>
+        <details><summary>{{t:faq.q5}}</summary><p>{{t:faq.a5}}</p></details>
+        <details><summary>{{t:faq.q6}}</summary><p>{{t:faq.a6}}</p></details>
+        <details><summary>{{t:faq.q7}}</summary><p>{{h:faq.a7}}</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap footer-grid">
+    <div><p class="footer-credit">{{t:footer.credit}}</p><p>{{t:footer.license}}</p><a class="text-link" href="{{url:hub}}">{{cfg:brand}}</a></div>
+    <div class="footer-links">
+      {{#if cfg:links.coffee}}<a href="{{cfg:links.coffee}}">{{t:footer.coffee}}</a>{{/if}}
+      <a href="{{url:speak-away-privacy}}">{{t:privacy.link}}</a>
+      <a href="{{pj:repo}}">{{t:footer.github}}</a><a href="{{cfg:links.instagram}}">{{t:footer.instagram}}</a>
+      <a class="lang-switch language-es" href="{{url:speak-away@es}}" hreflang="es" lang="es" aria-label="{{t:lang.label}}">ES</a>
+      <a class="lang-switch language-en" href="{{url:speak-away@en}}" hreflang="en" lang="en" aria-label="{{t:lang.label}}">EN</a>
+    </div>
+  </div>
+</footer>
+<script type="application/json" id="demo-data">{{h:demo.data}}</script>
+{{scripts}}
+</body>
+</html>

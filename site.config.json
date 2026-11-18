@@ -1,0 +1,12 @@
+{
+  "siteUrl": "https://opensource.dalepanama.com",
+  "brand": "Open Source Everything",
+  "author": "Martín Urbano",
+  "locales": ["en", "es"],
+  "defaultLocale": "en",
+  "links": {
+    "github": "https://github.com/martinfurbano-ai",
+    "instagram": "https://www.instagram.com/opensourceeverything/",
+    "coffee": "https://buy.stripe.com/eVq4gs7Epdfc9jW5U3dZ60m"
+  }
+}

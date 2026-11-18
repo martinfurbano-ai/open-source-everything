@@ -1,0 +1,31 @@
+[
+  {
+    "id": "hub",
+    "template": "src/pages/hub.html",
+    "i18n": ["src/i18n/hub"],
+    "paths": { "en": "/", "es": "/es/" },
+    "css": ["src/styles/base.css", "src/styles/hub.css"],
+    "js": ["src/js/ui.js"],
+    "type": "hub"
+  },
+  {
+    "id": "speak-away",
+    "template": "projects/speak-away/page.html",
+    "i18n": ["projects/speak-away/i18n/page"],
+    "paths": { "en": "/speak-away/", "es": "/es/speak-away/" },
+    "css": ["src/styles/base.css", "projects/speak-away/page.css"],
+    "js": ["src/js/ui.js", "projects/speak-away/page.js"],
+    "type": "project",
+    "project": "speak-away"
+  },
+  {
+    "id": "speak-away-privacy",
+    "template": "projects/speak-away/privacy.html",
+    "i18n": ["projects/speak-away/i18n/privacy"],
+    "paths": { "en": "/speak-away/privacy/", "es": "/es/speak-away/privacidad/" },
+    "css": ["src/styles/base.css", "projects/speak-away/page.css"],
+    "js": ["src/js/ui.js", "projects/speak-away/page.js"],
+    "type": "privacy",
+    "project": "speak-away"
+  }
+]

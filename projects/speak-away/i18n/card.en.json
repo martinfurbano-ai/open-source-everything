@@ -1,0 +1,9 @@
+{
+  "name": "Speak Away",
+  "tagline": "Dictate in any app by speaking. Meeting notes too. It runs on your Mac.",
+  "meta": "MIT license · Swift · macOS 14 or later, Apple Silicon",
+  "mac": "Mac: available",
+  "iphone": "iPhone: coming soon",
+  "download": "Download for Mac",
+  "source": "Source code"
+}
