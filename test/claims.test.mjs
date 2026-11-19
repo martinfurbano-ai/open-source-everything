@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { built, read, pageFile } from './helpers.mjs';
+import { built, read, pageFile, htmlFiles } from './helpers.mjs';
 import { assertClipboard } from './clipboard-claims.mjs';
 
 const forbidden = [
@@ -77,28 +77,17 @@ test('Speak Away claims obey section 9 on all four localized output pages', asyn
         assert.match(plain(section), lang === 'en' ? /2,000 entries/ : /2\.000 entradas/);
       });
     }
-    const adjacencyHtml = privacyIphone
-      ? html.replace(/(<section\b[^>]*id="iphone"[^>]*>)([\s\S]*?)(<\/section>)/,
-        (_, open, content, close) => open + content.replace(/<p>[\s\S]*?<\/p>/g, '') + close)
-      : html;
-    const adjacencyText = plain(adjacencyHtml);
     if (privacyIphone) {
-      await t.test(`${path}: iPhone section states future availability`, () => {
+      await t.test(`${path}: iPhone section states App Store availability`, () => {
         const section = html.match(/<section\b[^>]*id="iphone"[^>]*>([\s\S]*?)<\/section>/)?.[1];
         assert.ok(section, `${path}: missing iPhone section`);
         const heading = section.match(/<h2>([\s\S]*?)<\/h2>/)?.[1];
         const firstParagraph = section.match(/<p>([\s\S]*?)<\/p>/)?.[1];
-        assert.match(heading, lang === 'en' ? /coming soon/i : /próximamente/i);
+        assert.equal(heading, lang === 'en' ? 'iPhone: app and keyboard' : 'iPhone: app y teclado');
         assert.match(firstParagraph, lang === 'en'
-          ? /^The app and keyboard are not released yet\./
-          : /^La app y el teclado todavía no se han publicado\./);
+          ? /^The iPhone app and keyboard are available on the App Store\./
+          : /^La app y el teclado para iPhone están disponibles en el App Store\./);
       });
-    }
-    const mentions = [...adjacencyText.matchAll(/iPhone/gi)];
-    assert.ok(mentions.length, `${path}: future availability`);
-    for (const mention of mentions) {
-      const adjacent = adjacencyText.slice(mention.index + 6, mention.index + 140);
-      assert.match(adjacent, lang === 'en' ? /^(?:; the next request replaces that file)?[^.!?]{0,35}coming soon/i : /^(?:; la siguiente solicitud reemplaza ese archivo)?[^.!?]{0,35}próximamente/i, `${path}: every iPhone mention needs adjacent future status`);
     }
     const meetingSection = html.match(/<section\b[^>]*id="meetings"[^>]*>([\s\S]*?)<\/section>/)?.[1];
     if (meetingSection) {
@@ -169,5 +158,58 @@ test('round 5 landing copy and all localized pages follow the corrected facts', 
         });
       }
     }
+  }
+});
+
+test('every built page avoids unreleased iPhone claims', async (t) => {
+  const { out } = await built(t);
+  for (const file of await htmlFiles(out)) {
+    await t.test(file.slice(out.length), async () => {
+      const html = await read(file);
+      const blocks = [...html.matchAll(/<(h[1-6]|p|summary|span|dt|dd|li|a)\b[^>]*>([\s\S]*?)<\/\1>/g)];
+      for (const [, , content] of blocks) {
+        const text = plain(content);
+        if (/iPhone/i.test(text)) {
+          assert.doesNotMatch(text, /coming soon|próximamente|not released yet|todavía no se han publicado/i);
+        }
+      }
+    });
+  }
+});
+
+test('both locales offer the released iPhone app from the hero and hub card', async (t) => {
+  const { out } = await built(t);
+  const appStore = 'https://apps.apple.com/app/id6829756587';
+  for (const lang of ['en', 'es']) {
+    const en = lang === 'en';
+    const prefix = en ? '/' : '/es/';
+    const page = await read(pageFile(out, `${prefix}speak-away/`));
+    const hub = await read(pageFile(out, prefix));
+    const hero = page.match(/<section\b[^>]*id="hero"[^>]*>([\s\S]*?)<\/section>/)?.[1];
+    const card = hub.match(/<article\b[^>]*>([\s\S]*?)<\/article>/)?.[1];
+    for (const [name, content] of [['hero', hero], ['hub card', card]]) {
+      await t.test(`${lang}: ${name} links to the App Store`, () => {
+        assert.ok(content, `${lang}: missing ${name}`);
+        const link = [...content.matchAll(/<a\b[^>]*href="([^"]*)"[^>]*>([\s\S]*?)<\/a>/g)]
+          .find((match) => match[1] === appStore);
+        assert.ok(link, `${lang}: missing exact App Store link in ${name}`);
+        assert.equal(plain(link[2]).trim(), en ? 'Get it for iPhone' : 'Consíguelo para iPhone');
+      });
+    }
+    await t.test(`${lang}: hub card states availability`, () => {
+      assert.ok(card);
+      assert.ok(plain(card).includes(en ? 'iPhone: on the App Store' : 'iPhone: en el App Store'));
+    });
+    await t.test(`${lang}: FAQ describes the released app and its requirements`, () => {
+      const faq = [...page.matchAll(/<details><summary>([^<]*)<\/summary><p>([\s\S]*?)<\/p><\/details>/g)][5];
+      assert.ok(faq);
+      assert.equal(faq[1], en ? 'Does it work on iPhone?' : '¿Funciona en iPhone?');
+      const answer = plain(faq[2]);
+      for (const pattern of en
+        ? [/^Yes\./, /App Store/, /app with a voice keyboard/, /free/, /no account/, /iOS 26 or later/, /not available in the European Union or mainland China/]
+        : [/^Sí\./, /App Store/, /app con un teclado de voz/, /gratis/, /sin cuenta/, /iOS 26 o posterior/, /no está disponible en la Unión Europea ni en China continental/i]) {
+        assert.match(answer, pattern);
+      }
+    });
   }
 });

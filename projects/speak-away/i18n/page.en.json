@@ -62,9 +62,10 @@
   "faq.a4": "History is on by default: final and raw dictated text, app name, date and word count, up to 2,000 entries on your Mac. It also keeps stats, meeting notes, scratchpad, dictionary, voice shortcuts, writing styles, settings, the downloaded speech model and a small debug log. A meeting note has no summary until you press “Resumir” (Summarize). Audio is never written to storage.",
   "faq.q5": "Which languages?",
   "faq.a5": "English and Spanish, with automatic detection. The app’s own menus and screens are in Spanish today.",
-  "faq.q6": "Does it work on iPhone (coming soon)?",
-  "faq.a6": "The iPhone app and keyboard are coming soon. They are not released yet.",
+  "faq.q6": "Does it work on iPhone?",
+  "faq.a6": "Yes. Speak Away for iPhone is on the App Store as an app with a voice keyboard, free and with no account. It requires iOS 26 or later. It is not available in the European Union or mainland China.",
   "faq.q7": "How do I turn history off or delete my data?",
   "faq.a7": "Turn history off in the app, or delete entries one by one. To delete stored data, quit the app first. Save any notes you want to keep elsewhere, then delete <code>~/Library/Application Support/Speak Away</code>. That folder holds history, dictionary, voice shortcuts, writing styles, scratchpad notes, meeting notes, the downloaded speech model and a small debug log. Stats and settings are in the app’s preferences: run <code>defaults delete com.opensourceeverything.speakaway</code> in Terminal to clear them. You can also uninstall the app.",
-  "demo.data": "{\"samples\": [{\"app\": \"Gmail\", \"text\": \"Hi Carla, I will send you the quote today before five. I will call you Tuesday so we can go over it together.\"}, {\"app\": \"WhatsApp\", \"text\": \"I will be there in ten minutes. Save me a seat by the window.\"}, {\"app\": \"Notion\", \"text\": \"Launch ideas: a short video, a page in Spanish and English, and a LinkedIn post.\"}], \"hud\": {\"listening\": \"LISTENING\", \"whisper\": \"WHISPER\", \"pasted\": \"PASTED\"}, \"speaker\": \"You\"}"
+  "demo.data": "{\"samples\": [{\"app\": \"Gmail\", \"text\": \"Hi Carla, I will send you the quote today before five. I will call you Tuesday so we can go over it together.\"}, {\"app\": \"WhatsApp\", \"text\": \"I will be there in ten minutes. Save me a seat by the window.\"}, {\"app\": \"Notion\", \"text\": \"Launch ideas: a short video, a page in Spanish and English, and a LinkedIn post.\"}], \"hud\": {\"listening\": \"LISTENING\", \"whisper\": \"WHISPER\", \"pasted\": \"PASTED\"}, \"speaker\": \"You\"}",
+  "cta.iphone": "Get it for iPhone"
 }

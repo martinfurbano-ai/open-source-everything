@@ -3,7 +3,8 @@
   "tagline": "Dictate in any app by speaking. Meeting notes too. It runs on your Mac.",
   "meta": "MIT license · Swift · macOS 14 or later, Apple Silicon",
   "mac": "Mac: available",
-  "iphone": "iPhone: coming soon",
+  "iphone": "iPhone: on the App Store",
   "download": "Download for Mac",
-  "source": "Source code"
+  "source": "Source code",
+  "download.iphone": "Get it for iPhone"
 }

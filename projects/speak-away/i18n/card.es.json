@@ -3,7 +3,8 @@
   "tagline": "Dicta en cualquier app hablando. También notas de reuniones. Funciona en tu Mac.",
   "meta": "Licencia MIT · Swift · macOS 14 o superior, Apple Silicon",
   "mac": "Mac: disponible",
-  "iphone": "iPhone: próximamente",
+  "iphone": "iPhone: en el App Store",
   "download": "Descargar para Mac",
-  "source": "Código fuente"
+  "source": "Código fuente",
+  "download.iphone": "Consíguelo para iPhone"
 }

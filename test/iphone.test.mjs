@@ -29,7 +29,7 @@ test('iPhone privacy separates dictation, meeting recording and stored data in b
       [0, 'closed app retains dictated text until reopened', en ? /\(if the app is closed at that moment, the text stays there until you open the app again\)/ : /\(si la app se cierra en ese momento, el texto se queda ahí hasta que vuelvas a abrirla\)/],
       [0, 'Undo compares text only in memory', en ? /To keep Undo working, the keyboard also compares the text before your cursor with what it inserted last, only in memory\./ : /Para que deshacer siga funcionando, el teclado también compara el texto anterior al cursor con lo último que insertó, solo en memoria\./],
       [0, 'Command Mode falls back to the last sentence', en ? /last sentence before your cursor/ : /última frase antes del cursor/],
-      [0, 'request replacement retains future status', en ? /replaces that file \(coming soon\)/ : /reemplaza ese archivo \(próximamente\)/],
+      [0, 'request replacement is current', en ? /replaces that file\./ : /reemplaza ese archivo\./],
       [1, 'manual recording button', en ? /Record meeting/ : /Grabar reunión/],
       [1, 'no automatic meeting detection', en ? /does not detect meetings by itself/ : /no detecta reuniones por sí sola/],
       [1, 'audio is never stored', en ? /Audio is never written to storage/ : /El audio nunca se escribe en el almacenamiento/],
@@ -44,7 +44,7 @@ test('iPhone privacy separates dictation, meeting recording and stored data in b
       [1, 'speech recognition failure stops and saves the meeting', en ? /stops the meeting and saves what it heard/ : /detiene la reunión y guarda lo que oyó/],
       [1, 'copy button produces a prompt', en ? /as a ready to paste prompt/ : /mensaje listo para pegar/],
       [1, 'clipboard can reach other Apple devices', en ? /Universal Clipboard/ : /Portapapeles universal/],
-      [2, 'unreadable shared data files leave a backup', /\.bak/],
+      [2, 'undecodable shared data files leave a backup', en ? /If a data file such as the history cannot be decoded, the app moves it aside as a copy with a \.bak ending in the same folder and starts a new one\./ : /Si un archivo de datos, como el historial, no se puede decodificar, la app lo aparta como una copia con terminación \.bak en la misma carpeta y empieza uno nuevo\./],
       [2, 'history has a limit', en ? /at most 2,000 entries/ : /hasta 2\.000 entradas/],
       [2, 'no account', en ? /no account/ : /no hay cuenta/],
     ];

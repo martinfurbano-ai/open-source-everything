@@ -9,7 +9,7 @@ async function resolves(value, out, file, config, externalHosts) {
   if (url.origin !== config.siteUrl) {
     const allowed = ['github.com', 'www.instagram.com', ...(config.links.coffee ? [new URL(config.links.coffee).hostname] : [])];
     assert.equal(url.protocol, 'https:', value);
-    assert.ok(allowed.includes(url.hostname), `${file}: unexpected host ${value}`);
+    assert.ok(allowed.includes(url.hostname) || url.href === 'https://apps.apple.com/app/id6829756587', `${file}: unexpected host ${value}`);
     externalHosts.add(url.hostname);
     return;
   }
@@ -51,7 +51,7 @@ test(`all HTML and own-domain URLs resolve with coffee=${coffee || 'empty'}`, as
     await resolves(value, out, sitemapFile, config, externalHosts);
   }
   for (const link of tags(sitemap, 'xhtml:link')) await resolves(link.href, out, sitemapFile, config, externalHosts);
-  assert.deepEqual([...externalHosts].sort(), ['github.com', 'www.instagram.com', ...(coffee ? ['buymeacoffee.com'] : [])].sort());
+  assert.deepEqual([...externalHosts].sort(), ['apps.apple.com', 'github.com', 'www.instagram.com', ...(coffee ? ['buymeacoffee.com'] : [])].sort());
 });
 }
 
